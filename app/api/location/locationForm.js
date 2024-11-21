@@ -27,7 +27,7 @@ const MyLocation = ({ userId }) => {
             credentials: 'include',
             body: JSON.stringify(bodyData),
         });
-
+            console.log('http://localhost/Devoi_socila_media/src/backend/api/location/location.php', response);
         // Traitez la réponse si nécessaire, par exemple :
         if (response.ok) {
             console.log("Soumission réussie");

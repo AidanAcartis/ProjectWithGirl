@@ -9,6 +9,7 @@ export default function Cover({ editable }) {
     const fetchUserId = async () => {
         try {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             const userIdFromFile = await response.text();
             setUserId(userIdFromFile.trim());
         } catch (error) {
@@ -21,7 +22,7 @@ export default function Cover({ editable }) {
         try {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json');
             const data = await response.json();
-            
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json', response);
             // Recherche de la photo de couverture de l'utilisateur connecté
             const userCover = data.find(photo => photo.user_id === userId);
             if (userCover) {
@@ -70,6 +71,7 @@ export default function Cover({ editable }) {
                 });
 
                 if (response.ok) {
+                    console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/updateCoverPhoto.php', response);
                     alert("Photo de couverture mise à jour avec succès !");
                     fetchCoverPhoto(); // Recharger la photo de couverture après la mise à jour
                 } else {

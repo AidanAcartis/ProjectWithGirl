@@ -15,6 +15,7 @@ export default function UserFiles() {
     try {
       console.log("Début de la récupération de l'ID utilisateur...");
       const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
+      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
       console.log("Statut de la réponse de l'ID utilisateur :", response.status);
       if (!response.ok) {
         throw new Error("Erreur de la réponse lors de la récupération de l'ID utilisateur");
@@ -35,7 +36,7 @@ export default function UserFiles() {
         throw new Error("Erreur lors de la récupération des fichiers de l'utilisateur");
       }
       const data = await response.json();
-      
+      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/posts/createPost/userFile.json', data);
       // Filtrer les fichiers selon le userId et séparer par type
       const userFiles = data.filter(file => file.user_id === userId);
       setPhotos(userFiles.filter(file => file.doc_type === 'photo'));

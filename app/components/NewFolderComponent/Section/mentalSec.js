@@ -11,6 +11,7 @@ export default function SectionMental() {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt');
             const userTypeFromFile = await response.text();
             setUserType(userTypeFromFile);
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt', response);
             console.log('userType:', userType);
         } catch (error) {
             console.error("Erreur lors de la récupération du type utilisateur :", error);

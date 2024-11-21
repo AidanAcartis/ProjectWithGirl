@@ -18,6 +18,7 @@ export default function ProfilePhoto({ size }) {
         try {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
             const userIdFromFile = await response.text();
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             setUserId(userIdFromFile.trim());
         } catch (error) {
             console.error("Erreur lors de la récupération de l'ID utilisateur :", error);
@@ -27,6 +28,7 @@ export default function ProfilePhoto({ size }) {
     const fetchAvatar = async () => {
         try {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/profile_photo.json');
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/profile_photo.json', response);
             const data = await response.json();
             const userAvatar = data.find(photo => photo.user_id === userId);
             if (userAvatar) {
@@ -66,6 +68,7 @@ export default function ProfilePhoto({ size }) {
                 });
 
                 if (response.ok) {
+                    console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/updateProfilePhoto.php', response);
                     alert("Avatar mis à jour avec succès !");
                     fetchAvatar();
                 } else {

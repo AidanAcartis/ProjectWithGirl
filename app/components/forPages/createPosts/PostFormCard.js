@@ -26,6 +26,7 @@ export default function PostFormCard() {
             if (!response.ok) {
                 throw new Error("Erreur lors de la récupération de l'ID utilisateur.");
             }
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             const userIdFromFile = await response.text();
             setUserId(userIdFromFile.trim());
         } catch (error) {
@@ -87,7 +88,7 @@ export default function PostFormCard() {
                 body: formData
             });
             console.log("Fetch terminé, en attente de la réponse...");
-    
+            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/posts/createPost/create_post.php', response);
             const responseText = await response.text();
             console.log("Réponse brute reçue :", responseText);
     

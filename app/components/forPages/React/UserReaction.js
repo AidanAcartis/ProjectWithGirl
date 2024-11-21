@@ -28,6 +28,7 @@ const UserReactions = ({ posts }) => {
             try {
                 // Fetch the userId from the userId.txt file
                 const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
+                console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
                 const userIdText = await response.text();
                 setUserId(userIdText.trim()); // Trim to remove any extra spaces or newlines
             } catch (error) {
@@ -45,6 +46,7 @@ const UserReactions = ({ posts }) => {
             try {
                 // Fetch the reactions JSON file
                 const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/reactions/reactions.json');
+                console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/reactions/reactions.json', response);
                 const data = await response.json();
 
                 // Filter reactions for the connected user

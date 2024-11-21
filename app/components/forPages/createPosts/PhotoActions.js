@@ -26,7 +26,7 @@ export const usePhotoActions = () => {
             });
 
             const data = await response.json();
-
+            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/posts/createPost/get_photo.php', data);
             if (response.ok) {
                 setPhotoText('');
                 console.log('Réponse du serveur : ', data.message);

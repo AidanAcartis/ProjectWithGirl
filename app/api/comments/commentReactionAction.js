@@ -36,6 +36,7 @@ const Reaction = ({ commentId }) => {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
             const userIdFromFile = await response.text();
             setUserId(userIdFromFile.trim());
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
         } catch (error) {
             console.error("Error fetching user ID:", error);
         }
@@ -54,7 +55,7 @@ const Reaction = ({ commentId }) => {
                 const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/comments/commentReaction.json');
                 const data = await response.json();
                 console.log("All reactions data:", data); 
-        
+                console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/comments/commentReaction.json', response);
                 // Filter reactions for the connected user
                 const userReactions = data.filter(
                     (reaction) => reaction.user_id === userId // Change userId to user_id
@@ -99,7 +100,7 @@ const Reaction = ({ commentId }) => {
                     reaction_type: type
                 }),
             });
-
+            console('http://localhost/Devoi_socila_media/src/backend/controllers/comments/comment_reaction.php', response);
             const result = await response.json();
 
             if (result.success) {

@@ -9,7 +9,7 @@ export const handleUpdateNotif = async () => {
                 },
                 credentials: 'include',
             });
-
+            console.log('http://localhost/Devoi_socila_media/src/backend/api/displayNotification/updateNotif.php', response);
             console.log(`Réponse du serveur : ${response.status}`);
             
             if (response.ok) {

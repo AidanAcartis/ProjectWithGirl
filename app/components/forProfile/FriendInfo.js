@@ -20,6 +20,7 @@ export default function FriendInfo() {
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération de l'ID utilisateur.");
       }
+      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
       const userIdFromFile = await response.text();
       setLoggedInUserId(userIdFromFile.trim());
     } catch (error) {
@@ -34,6 +35,7 @@ export default function FriendInfo() {
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des amis.");
       }
+      console.log('http://localhost/Devoi_socila_media/src/backend/api/friends/allFriends.php', response);
       const data = await response.json();
 
       // Filtrer les amis correspondant à l'userId
@@ -81,6 +83,7 @@ export default function FriendInfo() {
         const followResponse = await fetch(`http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${friend.followed_id}`, {
           credentials: 'include',
         });
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${friend.followed_id}', followResponse);
         const followData = await followResponse.json();
         status[friend.followed_id] = followData.isFollowing;
       }
@@ -93,7 +96,7 @@ export default function FriendInfo() {
   // Fonction pour gérer le clic sur le bouton "Follow"
   const handleFollow = async (followedId) => {
     try {
-      await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
+     const res =  await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', 
@@ -103,6 +106,7 @@ export default function FriendInfo() {
         ...prevStatus,
         [followedId]: true
       }));
+      console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', res);
     } catch (error) {
       console.error("Erreur lors du suivi de l'utilisateur :", error);
     }
@@ -112,7 +116,7 @@ export default function FriendInfo() {
   // Fonction pour gérer le clic sur le bouton "Unfollow"
   const handleUnFollow = async (followedId) => {
     try {
-      await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
+      const respo = await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', 
@@ -122,6 +126,7 @@ export default function FriendInfo() {
         ...prevStatus,
         [followedId]: false
       }));
+      console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', respo);
     } catch (error) {
       console.error("Erreur lors du désabonnement de l'utilisateur :", error);
     }
@@ -161,7 +166,7 @@ export default function FriendInfo() {
             credentials: 'include',
         });
         const data = await response.json();
-
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${targetUserId}', response);
             router.push(`/home/followedPage?userId=${targetUserId}`);
         
     } catch (error) {

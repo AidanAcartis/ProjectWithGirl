@@ -51,6 +51,7 @@ export default function SecurityComplaintForm({ signalementId }) {
       console.log('les donnees a envoyees:', formData);
 
       if (response.ok) {
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/securityComplaints.php', response);
         console.log("Données envoyées avec succès");
       } else {
         console.error("Erreur lors de l'envoi des données");

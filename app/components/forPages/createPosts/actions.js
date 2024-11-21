@@ -21,9 +21,9 @@ export const usePostActions = () => {
                 credentials: 'include',
                 body: JSON.stringify({ text: postText }),
             });
-
+            
             const data = await response.json(); // Récupérer la réponse en JSON
-
+            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/posts/createPost/create_post.php', data);
             if (response.ok) {
                 // Ne pas gérer les posts ici
                 setPostText(''); // Effacer le texte après un partage réussi

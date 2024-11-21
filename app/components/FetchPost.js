@@ -7,7 +7,7 @@ export async function ServerFetchCommentById(postId) {
             return null;
         }
         const data = await response.json();
-
+        console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/posts/createPost/posts.json', data);
         // Filtrer les données pour trouver le post avec le postId spécifié
         const post = data.find(post => post.id === String(postId)); // Convertir postId en chaîne
         if (post) {

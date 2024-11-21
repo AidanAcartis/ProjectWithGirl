@@ -9,7 +9,7 @@ useEffect(() => {
     .then((response) => response.json())
     .then((data) => setData(data));
 }, []);
-
+console.log('http://localhost:3003/api/reports-by-person', data);
 if (!data) return <p>Chargement...</p>;
 
 const chartData = {

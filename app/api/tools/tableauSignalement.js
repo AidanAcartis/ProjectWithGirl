@@ -31,6 +31,7 @@ export default function ChartSignalement() {
         const res = await fetch(
           `http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementDisplay.php?id=${currentSignalementId}`
         );
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementDisplay.php?id=${currentSignalementId}', res);
         if (!res.ok) throw new Error("Erreur lors du chargement du signalement");
         const data = await res.json();
         setSignalement(data);
@@ -49,6 +50,7 @@ export default function ChartSignalement() {
           'http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementBoard.php'
         );
         if (!response.ok) throw new Error('Réponse du serveur incorrecte');
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementBoard.php', response);
         const data = await response.json();
         if (data.status === 'success' && Array.isArray(data.data)) {
           setComplaints(data.data);

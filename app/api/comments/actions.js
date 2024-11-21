@@ -12,6 +12,7 @@ export const useCommentActions = () => {
         try {
             console.log("Début de la récupération de l'ID utilisateur...");
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             console.log("Statut de la réponse de l'ID utilisateur :", response.status);
             if (!response.ok) {
                 throw new Error("Erreur de la réponse lors de la récupération de l'ID utilisateur");
@@ -49,6 +50,8 @@ export const useCommentActions = () => {
                 credentials: 'include',
                 body: JSON.stringify(bodyData),
             });
+
+            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/comments/add_comment.php', response);
 
             const responseText = await response.text(); // Récupérer la réponse sous forme de texte
             console.log("Contenu de la réponse :", responseText); // Vérifie ce qui est renvoyé

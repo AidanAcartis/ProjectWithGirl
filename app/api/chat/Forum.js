@@ -19,6 +19,7 @@ const Forum = () => {
             }
             const userIdFromFile = await response.text();
             setUserId(userIdFromFile.trim());
+            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
         } catch (error) {
             console.error("Erreur lors de la récupération de l'ID utilisateur :", error);
         }

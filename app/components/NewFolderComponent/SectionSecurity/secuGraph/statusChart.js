@@ -40,6 +40,7 @@ const SignalementCharts = () => {
       .then((response) => response.json())
       .then((data) => setCurrentStatusData(data))
       .catch((error) =>
+
         console.error("Erreur lors de la récupération des données pour current_status", error)
       );
 

@@ -26,7 +26,7 @@ export const handleReactionClick = async (reactionType, postId, setSelectedReact
                 reaction: reactionType // Pass the reactionType here
             })
         });
-
+        console.log('http://localhost/Devoi_socila_media/src/backend/controllers/reactions/add_reaction.php', response);
         const result = await response.json();
         console.log(result); // Process the server response
     } catch (error) {

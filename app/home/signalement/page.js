@@ -35,7 +35,7 @@ const Signalement = ({ signalementId: initialSignalementId }) => {
         if (!res.ok) throw new Error("Erreur lors du chargement du signalement");
         const data = await res.json();
         setSignalement(data);
-        console.log('Signalement:', data);
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementDisplay.php?id=${currentSignalementId}', data);
       } catch (err) {
         setError(err.message);
       } finally {

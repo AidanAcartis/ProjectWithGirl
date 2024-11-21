@@ -35,6 +35,8 @@ export default function SignalementBoard() {
         );
         if (!res.ok) throw new Error("Erreur lors du chargement du signalement");
         const data = await res.json();
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementDisplay.php?id=${currentSignalementId}', data );
+        
         setSignalement(data);
       } catch (err) {
         console.error(err.message);
@@ -52,6 +54,8 @@ export default function SignalementBoard() {
         );
         if (!response.ok) throw new Error('Réponse du serveur incorrecte');
         const data = await response.json();
+        console.log(data);
+        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementBoard.php', response);
         if (data.status === 'success' && Array.isArray(data.data)) {
           setComplaints(data.data);
         } else {

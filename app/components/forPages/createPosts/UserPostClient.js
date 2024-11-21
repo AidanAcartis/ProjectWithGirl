@@ -209,6 +209,7 @@ const UserPostClient = () => {
         const fetchUserId = async () => {
             try {
                 const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
+                console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
                 const text = await response.text();
                 const userId = text.trim();
                 sessionStorage.setItem('userId', userId);

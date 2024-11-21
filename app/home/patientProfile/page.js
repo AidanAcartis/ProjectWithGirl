@@ -39,6 +39,7 @@ export default function ProfilePage() {
           const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
           const userIdFromFile = await response.text();
           setUserId(userIdFromFile.trim());
+          console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', userIdFromFile);
       } catch (error) {
           console.error("Error fetching user ID:", error);
       }
