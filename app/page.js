@@ -1,13 +1,24 @@
 import Link from "next/link";
-import Layout from "./components/forPages/PageLayout";
-import PostCard from "./components/forPages/PostCard";
-import PostFormCard from "./components/forPages/createPosts/PostFormCard";
+import Header from "./components/NewFolderComponent/Accueil/headerPage";
+import HeroSection from "./components/NewFolderComponent/Accueil/heroSection";
+import MentalHealthSection from "./components/NewFolderComponent/Accueil/mentalHealthSectionPage";
+import LegalSupportSection from "./components/NewFolderComponent/Accueil/legalSectionSection";
+import ContactSection from "./components/NewFolderComponent/Accueil/contactSection";
+import Footer from "./components/NewFolderComponent/Accueil/footerPage";
 
-
-export default async function Home() {
+export default function Home() {
   return (
-    <Layout>
-    <PostFormCard />
-  </Layout>
+    <div>
+      <Header />
+      <HeroSection />
+      <Link href={'/home/mentalPage'}>
+          <MentalHealthSection />
+      </Link>
+      <Link href={'/home/SuiviJuridique'}>
+        <LegalSupportSection />
+      </Link>
+      <ContactSection />
+      <Footer />
+    </div>
   );
 }

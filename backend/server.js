@@ -57,6 +57,179 @@ app.get('/', (req, res) => {
     res.send('<h1>Bienvenue sur le serveur!</h1>');
 });
 
+// Endpoint pour la répartition des signalements par `current_status`
+app.get("/api/current-status-distribution", async (req, res) => {
+    const query = "SELECT current_status, COUNT(*) as count FROM security_complaints GROUP BY current_status";
+    try {
+      const [results] = await db.query(query); // Attendre la résolution de la requête
+      res.json(results); // Renvoie les résultats sous format JSON
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Erreur lors de la récupération des données." });
+    }
+  });
+
+  // Endpoint pour la répartition des signalements par `priority`
+app.get("/api/priority-distribution", async (req, res) => {
+    const query = "SELECT priority, COUNT(*) as count FROM security_complaints GROUP BY priority";
+    try {
+      const [results] = await db.query(query); // Attendre la résolution de la requête
+      res.json(results); // Renvoie les résultats sous format JSON
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Erreur lors de la récupération des données." });
+    }
+  });
+  
+
+app.get("/api/geographic-distribution", async (req, res) => {
+    const query = "SELECT location, COUNT(*) as count FROM signalements GROUP BY location";
+    try {
+      const [results] = await db.query(query); // Attendez la résolution de la promesse
+      res.json(results); // Renvoie les résultats
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Erreur lors de la récupération des données." });
+    }
+  });
+  
+  // Endpoint : Signalements par personne
+  // Endpoint : Signalements par personne
+app.get("/api/reports-by-person", async (req, res) => {
+    const query = "SELECT full_name, COUNT(*) as count FROM signalements GROUP BY full_name";
+    
+    try {
+      // Exécutez la requête avec la version promise de MySQL
+      const [results] = await db.query(query);
+      res.json(results);
+    } catch (err) {
+      // Gérez les erreurs
+      console.error(err);
+      res.status(500).json({ error: "Une erreur est survenue lors de l'exécution de la requête." });
+    }
+  });
+  
+  
+
+// Route 1 : Nombre total de plaintes
+app.get('/api/plaintes/total', async (req, res) => {
+    const query = 'SELECT COUNT(*) AS total FROM signalements';
+    try {
+        const [rows] = await db.execute(query);
+        res.json(rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Route : Répartition des plaintes par statut
+app.get('/api/plaintes/repartition_status', async (req, res) => {
+    const query = `
+        SELECT current_status, COUNT(*) AS count
+        FROM security_complaints
+        GROUP BY current_status
+    `;
+    try {
+        const [results] = await db.execute(query);
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+// Route 2 : Répartition par statut
+app.get('/api/plaintes/repartition', async (req, res) => {
+    const query = `
+        SELECT location, COUNT(*) AS count
+        FROM signalements
+        GROUP BY location
+    `;
+    try {
+        const [results] = await db.execute(query);
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Route 3 : Types de violences signalées
+app.get('/api/plaintes/types', async (req, res) => {
+    const query = `
+        SELECT description, COUNT(*) AS count
+        FROM signalements
+        GROUP BY description
+    `;
+    try {
+        const [results] = await db.execute(query);
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Route 4 : Statistiques temporelles (par jour)
+app.get('/api/plaintes/par-jour', async (req, res) => {
+    const query = `
+        SELECT DATE(created_at) AS jour, COUNT(*) AS count
+        FROM signalements
+        GROUP BY DATE(created_at)
+        ORDER BY jour ASC
+    `;
+    try {
+        const [results] = await db.execute(query);
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Route 5 : Temps moyen de traitement
+app.get('/api/plaintes/temps-moyen', async (req, res) => {
+    const query = `
+        SELECT TIMESTAMPDIFF(MINUTE, created_at, NOW()) AS temps_moyen
+        FROM signalements
+    `;
+    try {
+        const [results] = await db.execute(query);
+        const total = results.reduce((sum, row) => sum + row.temps_moyen, 0);
+        const moyenne = total / results.length || 0;
+        res.json({ temps_moyen: moyenne });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Route pour trouver les postes de police à proximité
+app.get('/nearby-police', async (req, res) => {
+    const { latitude, longitude } = req.query;
+    
+    // Vérification des coordonnées reçues
+    if (!latitude || !longitude) {
+        return res.status(400).send('Latitude et longitude sont requises');
+    }
+
+    const apiKey = 'AIzaSyAnrbSjzC3195qmTINRW-yCsf6CVch-_PM'; // Remplace par ta clé API valide
+    const radius = 5000; // Rayon de recherche en mètres
+
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=police&key=${apiKey}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Afficher les données dans la console
+        console.log('Réponse API Google:', data);
+            
+        // Retourner les résultats au client
+        res.json(data);
+    } catch (error) {
+        console.error('Erreur lors de la recherche des postes de police:', error);
+        res.status(500).send('Erreur lors de la récupération des données');
+    }
+});
+
+
 io.on('connection', (socket) => {
     console.log('Nouvelle connexion WebSocket:', socket.id);
 
@@ -260,6 +433,18 @@ app.get('/Devoi_socila_media/src/backend/controllers/reactions/reactions.json', 
 
 app.get('/Devoi_socila_media/src/backend/controllers/users/userId.txt', (req, res) => {
     const filePath = path.join(__dirname, 'controllers/users/userId.txt');
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Erreur lors de l\'envoi du fichier:', err);
+            res.status(err.status || 500).end();
+        } else {
+            console.log('Fichier envoyé:', filePath);
+        }
+    });
+});
+
+app.get('/Devoi_socila_media/src/backend/controllers/users/userType.txt', (req, res) => {
+    const filePath = path.join(__dirname, 'controllers/users/userType.txt');
     res.sendFile(filePath, (err) => {
         if (err) {
             console.error('Erreur lors de l\'envoi du fichier:', err);
