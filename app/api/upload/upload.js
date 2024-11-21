@@ -36,7 +36,7 @@ const uploadFile = async (req, res) => {
             if (!response.ok) {
                 return res.status(response.status).json({ message: 'Erreur lors de la communication avec le serveur PHP.' });
             }
-            console.log('http://localhost/Devoi_socila_media/src/backend/models/upload.php', response);
+
             const result = await response.json();
             return res.status(200).json(result);
         } catch (fetchError) {

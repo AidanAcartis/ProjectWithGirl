@@ -13,7 +13,7 @@ export async function getUserProfilePhoto(userId) {
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/users/get_profile_photo.php?userId=${userId}', response);
+
         // Récupère les données en format JSON
         const data = await response.json();
         console.log("Données reçues :", data);

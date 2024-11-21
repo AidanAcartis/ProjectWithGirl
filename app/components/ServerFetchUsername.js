@@ -9,7 +9,6 @@ export async function ServerFetchUsername() {
             return '';
         }
         const data = await response.text();
-        console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/fichier.txt', data);
         const lines = data.split('\n');
         const username = lines[0].trim(); // Supposons qu'on veuille récupérer la première ligne
         console.log("Username récupéré:", username); // Ajoute un log pour voir ce qui est récupéré

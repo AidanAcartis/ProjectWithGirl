@@ -87,7 +87,6 @@ const ComplaintsBoard = () => {
         const response = await fetch(
           'http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementBoard.php'
         );
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/signalement/signalementBoard.php', response);
         if (!response.ok) throw new Error('Réponse du serveur incorrecte');
         const data = await response.json();
         if (data.status === 'success' && Array.isArray(data.data)) {

@@ -16,7 +16,6 @@ export default function HomePage() {
     try {
       const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt');
       const userTypeFromFile = await response.text();
-      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt', userTypeFromFile);
       setUserType(userTypeFromFile.trim()); // Utilisation de trim() pour enlever les espaces ou sauts de ligne
       console.log('userType:', userTypeFromFile);
     } catch (error) {

@@ -19,7 +19,7 @@ const GetMyLocation = ({ userId }) => {
           credentials: 'include',
           body: JSON.stringify({ user_id: userId }),
         });
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/location/getLocation.php', response);
+
         const responseText = await response.text();
         console.log("Contenu de la réponse :", responseText);
 

@@ -26,7 +26,6 @@ export default function LogoutPage() {
         router.push('/login'); // Utilisez router.push pour rediriger
       } else {
         const data = await response.json();
-        console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/logout.php', data);
         setError(data.message || "Échec de la déconnexion");
       }
     } catch (error) {

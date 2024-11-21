@@ -12,7 +12,6 @@ export default function UploadForm({ onFileSelected }) {
                 throw new Error("Erreur lors de la récupération de l'ID utilisateur.");
             }
             const userIdFromFile = await response.text();
-            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', userIdFromFile);
             setUserId(userIdFromFile.trim());
         } catch (error) {
             console.error("Erreur lors de la récupération de l'ID utilisateur :", error);

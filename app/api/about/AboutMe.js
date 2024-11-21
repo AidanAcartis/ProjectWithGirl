@@ -25,7 +25,6 @@ const AboutMeForm = ({ userId }) => {
             credentials: 'include',
             body: JSON.stringify(bodyData),
         });
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/about/about.php', response);
 
         const responseText = await response.text(); // Récupérer la réponse sous forme de texte
         console.log("Contenu de la réponse :", responseText); // Vérifie ce qui est renvoyé

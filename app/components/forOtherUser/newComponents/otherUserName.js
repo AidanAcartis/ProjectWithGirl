@@ -12,7 +12,7 @@ export async function getUserProfile(userId) {
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/users/get_username.php?userId=${userId}', response);
+  
         // Récupère les données utilisateur en format JSON
         const userData = await response.json();
 

@@ -14,7 +14,7 @@ const GeographicDistributionChart = () => {
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
-  console.log('http://localhost:3003/api/geographic-distribution', data);
+
   if (!data) return <p>Chargement...</p>;
 
   const chartData = {

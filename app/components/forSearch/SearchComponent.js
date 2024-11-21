@@ -19,7 +19,6 @@ function SearchComponent({ activeTab }) {
         try {
             console.log("Début de la récupération de l'ID utilisateur...");
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
-            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             console.log("Statut de la réponse de l'ID utilisateur :", response.status);
             if (!response.ok) {
                 throw new Error("Erreur de la réponse lors de la récupération de l'ID utilisateur");
@@ -58,7 +57,7 @@ function SearchComponent({ activeTab }) {
             const response = await fetch(`http://localhost/Devoi_socila_media/src/backend/api/search.php?username=${encodeURIComponent(searchQuery)}&userId=${userId}`, {
                 credentials: 'include', // Allows cookies with CORS
             });
-            console.log('http://localhost/Devoi_socila_media/src/backend/api/search.php?username=${encodeURIComponent(searchQuery)}&userId=${userId}', response);
+
             console.log("Statut de la réponse de recherche :", response.status);
             if (!response.ok) throw new Error('Network response was not ok');
 
@@ -74,7 +73,6 @@ function SearchComponent({ activeTab }) {
                 const followResponse = await fetch(`http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${user.id}`, {
                     credentials: 'include',
                 });
-                console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${user.id}', followResponse);
                 const followData = await followResponse.json();
                 status[user.id] = followData.isFollowing;
             }
@@ -88,7 +86,7 @@ function SearchComponent({ activeTab }) {
 
     const handleFollow = async (followedId) => {
         try {
-            const res = await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
+            await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include', 
@@ -99,7 +97,6 @@ function SearchComponent({ activeTab }) {
                 ...prevStatus,
                 [followedId]: true
             }));
-            console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', res);
         } catch (error) {
             console.error("Erreur lors du suivi de l'utilisateur :", error);
         }
@@ -109,7 +106,7 @@ function SearchComponent({ activeTab }) {
      // Fonction pour gérer le clic sur le bouton "Unfollow"
   const handleUnFollow = async (followedId) => {
     try {
-      const respo = await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
+      await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', 
@@ -120,7 +117,6 @@ function SearchComponent({ activeTab }) {
         ...prevStatus,
         [followedId]: false
     }));
-    console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', respo);
     } catch (error) {
       console.error("Erreur lors du désabonnement de l'utilisateur :", error);
     }
@@ -135,7 +131,7 @@ function SearchComponent({ activeTab }) {
                 credentials: 'include',
             });
             const data = await response.json();
-            console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${targetUserId}', response);
+
             if (data.isFollowing) {
                 router.push(`/home/followedPage?userId=${targetUserId}`);
             } else {

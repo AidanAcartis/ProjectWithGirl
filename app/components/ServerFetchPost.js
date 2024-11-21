@@ -11,7 +11,7 @@ export async function ServerFetchPost() {
 
         console.log('Post data fetched successfully, parsing JSON...');
         const data = await response.json();
-        console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/posts/createPost/posts.json', data);
+
         console.log('Post data parsed successfully:', data);
         return data;
     } catch (error) {

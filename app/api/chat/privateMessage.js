@@ -18,7 +18,6 @@ export default function Chat({ userId }) {
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération de l'ID utilisateur.");
       }
-      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
       const userIdFromFile = await response.text();
       setLoggedInUserId(userIdFromFile.trim());
       console.log('ID utilisateur récupéré:', userIdFromFile.trim()); // Log de l'ID utilisateur

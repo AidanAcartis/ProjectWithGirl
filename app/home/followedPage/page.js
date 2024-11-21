@@ -55,7 +55,6 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
       try {
           const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
           const userIdFromFile = await response.text();
-          console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', userIdFromFile);
           setFollowerUserId(userIdFromFile.trim());
       } catch (error) {
           console.error("Error fetching user ID:", error);
@@ -74,7 +73,7 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
             throw new Error("Erreur lors de la récupération des fichiers de l'utilisateur");
           }
           const data = await response.json();
-          console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/posts/createPost/userFile.json', data);
+  
           // Filtrer les fichiers selon le userId et séparer par type
           const userFiles = data.filter(file => Number(file.user_id) === userId);
           setPhotos(userFiles.filter(file => file.doc_type === 'photo'));
@@ -134,7 +133,7 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
               const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json');
               console.log("Réponse de la requête fetch:", response);
               const data = await response.json();
-              console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json', data);
+        
               // Recherche de la photo de couverture de l'utilisateur connecté
               const userCover = data.find(photo => Number(photo.user_id) === userId);
               console.log("URL de la photo de couverture:", userCover);
@@ -184,7 +183,7 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
   const handleUnFollow = async (followedId) => {
     const Id = followedId;
     try {
-     const res =  await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
+      await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', 
@@ -193,7 +192,6 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
       console.log("follower_id :", FollowerUserId);
       console.log("followed_id :", followedId);
       router.push(`/home/unfollowedPage?userId=${Id}`);
-      console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/unfollow.php', res);
     } catch (error) {
       console.error("Erreur lors du désabonnement de l'utilisateur :", error);
     }

@@ -26,7 +26,6 @@ export default function FriendToTalk() {
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération de l'ID utilisateur.");
       }
-      console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
       const userIdFromFile = await response.text();
       setLoggedInUserId(userIdFromFile.trim());
     } catch (error) {
@@ -42,7 +41,6 @@ export default function FriendToTalk() {
         throw new Error("Erreur lors de la récupération des amis.");
       }
       const data = await response.json();
-      console.log('http://localhost/Devoi_socila_media/src/backend/api/friends/allFriends.php', data);
 
       // Filtrer les amis correspondant à l'userId
       const filteredFriends = data.data.filter(friend => friend.follower_id === id);

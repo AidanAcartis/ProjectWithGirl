@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../components/forPages/Cards';
 
-
 const GetAboutMeForm = ({ userId }) => {
   const [aboutData, setAboutData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +19,7 @@ const GetAboutMeForm = ({ userId }) => {
           credentials: 'include',
           body: JSON.stringify({ user_id: userId }),
         });
-        console.log('http://localhost/Devoi_socila_media/src/backend/api/about/getAbout.php', response);
+
         const responseText = await response.text();
         console.log("Contenu de la réponse :", responseText);
 

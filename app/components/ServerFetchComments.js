@@ -7,7 +7,6 @@ export async function ServerFetchComments() {
             return null;
         }
         const data = await response.json();
-        console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/comments/comments.json', data);
         return data;
     } catch (error) {
         console.error('Error fetching post data:', error);

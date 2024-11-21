@@ -16,7 +16,6 @@ const DeleteCommentButton = ({ commentId, onDelete }) => {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Failed to delete comment');
             }
-            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/comments/delete_comment.php?id=${commentId}', response);
             console.log("Deleting comment with ID:", commentId);
             onDelete(commentId); // Mise à jour de la liste des commentaires
         } catch (error) {

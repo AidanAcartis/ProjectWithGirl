@@ -13,7 +13,7 @@ export function useAuth() {
         credentials: 'include', // Inclut les cookies (notamment PHPSESSID)
         body: JSON.stringify({ email, password , userType}),
       });
-      console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/login.php', response);
+  
       if (response.ok) {
         const sessionResponse = await fetch('http://localhost/Devoi_socila_media/src/backend/controllers/users/check_session.php', {
           method: 'GET',
@@ -21,7 +21,7 @@ export function useAuth() {
         });
   
         const sessionData = await sessionResponse.json();
-        console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/check_session.php', sessionData);
+  
         if (sessionData.loggedIn) {
           router.push('/');
         } else {
@@ -49,7 +49,6 @@ export function useAuth() {
       });
 
       if (response.ok) {
-        console.log('http://localhost/Devoi_socila_media/src/backend/controllers/users/signup.php', response);
         router.push('/login');
         console.log('User added successfully, You need to log in now');
       } else {

@@ -19,7 +19,6 @@ const NotificationCard = () => {
                     method: "GET",
                     credentials: "include", // Assure que les cookies de session sont envoyés
                 });
-                console.log('http://localhost/Devoi_socila_media/src/backend/api/displayNotification/updateNotif.php', response);
                 const data = await response.json();
                 console.log("Voici les infos sur les notifications non lues", data);
 

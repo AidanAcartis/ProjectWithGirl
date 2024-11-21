@@ -35,7 +35,6 @@ const Formulaire = ({ activeTab }) => {
         try {
             console.log("Début de la récupération de l'ID utilisateur...");
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
-            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', response);
             console.log("Statut de la réponse de l'ID utilisateur :", response.status);
             if (!response.ok) {
                 throw new Error("Erreur de la réponse lors de la récupération de l'ID utilisateur");
@@ -80,7 +79,7 @@ const Formulaire = ({ activeTab }) => {
             const response = await fetch(`http://localhost/Devoi_socila_media/src/backend/api/searchSomeone/searchFile.php?username=${encodeURIComponent(searchQuery)}&userId=${userId}`, {
                 credentials: 'include', // Allows cookies with CORS
             });
-            console.log('http://localhost/Devoi_socila_media/src/backend/api/searchSomeone/searchFile.php?username=${encodeURIComponent(searchQuery)}&userId=${userId}', response);
+
             console.log("Statut de la réponse de recherche :", response.status);
             if (!response.ok) throw new Error('Network response was not ok');
 
@@ -102,7 +101,6 @@ const Formulaire = ({ activeTab }) => {
             const response = await fetch(`http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${targetUserId}`, {
                 credentials: 'include',
             });
-            console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/check_follow_status.php?userId=${targetUserId}', response);
             const data = await response.json();
 
             if (data.isFollowing) {
@@ -177,7 +175,7 @@ const handleFileSelected = (file) => {
     if (!response.ok) {
         throw new Error(`Erreur lors de l'envoi : ${response.statusText}`);
     }
-    console.log('http://localhost/Devoi_socila_media/src/backend/api/report/report.php', response);
+
     const data = await response.json();
     console.log('Réponse du serveur :', data);
 } catch (error) {

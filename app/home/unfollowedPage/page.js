@@ -46,7 +46,6 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
       try {
           const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt');
           const userIdFromFile = await response.text();
-          console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userId.txt', userIdFromFile);
           setFollowerUserId(userIdFromFile.trim());
       } catch (error) {
           console.error("Error fetching user ID:", error);
@@ -101,7 +100,7 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
               const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json');
               console.log("Réponse de la requête fetch:", response);
               const data = await response.json();
-              console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/cover_photo.json',data);
+        
               // Recherche de la photo de couverture de l'utilisateur connecté
               const userCover = data.find(photo => Number(photo.user_id) === userId);
               console.log("URL de la photo de couverture:", userCover);
@@ -124,13 +123,12 @@ const activeTabClasses = 'flex gap-1 md:px-3 py-1 items-center border-socialBlue
       const handleFollow = async (followedId) => {
         const Id = followedId;
         try {
-          const res = await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
+          await fetch('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include', 
             body: JSON.stringify({ follower_id: FollowerUserId, followed_id: followedId }),
           });
-          console.log('http://localhost/Devoi_socila_media/src/backend/api/followers/follow.php', res);
           console.log("follower_id :", FollowerUserId);
           console.log("followed_id :", followedId);
           router.push(`/home/followedPage?userId=${Id}`);

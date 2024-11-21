@@ -11,7 +11,6 @@ export default function Statistics() {
         try {
             const response = await fetch('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt');
             const userTypeFromFile = await response.text();
-            console.log('http://localhost:3003/Devoi_socila_media/src/backend/controllers/users/userType.txt', response);
             setUserType(userTypeFromFile);
             console.log('userType:', userType);
         } catch (error) {

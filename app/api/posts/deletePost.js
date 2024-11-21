@@ -9,7 +9,7 @@ export const handleDeletePost = async (post) => {
                 },
                 credentials: 'include',
             });
-            console.log('http://localhost/Devoi_socila_media/src/backend/controllers/posts/deletePost/deletePost.php?id=${post.id}', response);
+
             console.log(`Réponse du serveur : ${response.status}`);
             
             if (response.ok) {
