@@ -262,7 +262,7 @@ CREATE TABLE `notifications` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +271,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (1,3,1,'reaction',1,'2024-11-10 17:54:28'),(2,3,1,'comment',1,'2024-11-10 17:54:59'),(3,3,1,'reaction',1,'2024-11-10 17:55:09'),(4,3,4,'comment_reaction',1,'2024-11-10 17:55:43'),(5,3,1,'new_post',1,'2024-11-10 17:56:18'),(6,3,2,'new_post',1,'2024-11-10 17:56:18'),(7,3,2,'follow',1,'2024-11-10 17:57:06'),(8,1,3,'comment_reaction',1,'2024-11-10 17:58:07'),(9,4,3,'comment_reaction',1,'2024-11-10 19:43:01'),(10,1,2,'follow',1,'2024-11-11 08:14:27'),(11,1,6,'follow',0,'2024-11-11 08:14:53'),(12,2,3,'reaction',1,'2024-11-11 09:12:43'),(13,2,3,'comment',1,'2024-11-13 18:51:02'),(14,3,2,'reaction',1,'2024-11-13 18:52:05'),(15,2,3,'reaction',1,'2024-11-13 18:55:08'),(16,2,3,'reaction',1,'2024-11-13 18:55:22'),(17,3,1,'comment',1,'2024-11-13 19:14:24'),(18,2,1,'follow',1,'2024-11-15 10:39:50'),(19,2,1,'new_post',1,'2024-11-16 20:25:45'),(20,2,3,'new_post',0,'2024-11-16 20:25:45'),(21,2,1,'new_post',1,'2024-11-18 07:44:21'),(22,2,3,'new_post',0,'2024-11-18 07:44:21'),(23,2,1,'new_post',1,'2024-11-18 07:48:14'),(24,2,3,'new_post',0,'2024-11-18 07:48:14'),(25,2,1,'new_post',1,'2024-11-18 08:53:42'),(26,2,3,'new_post',0,'2024-11-18 08:53:42'),(27,2,1,'new_post',1,'2024-11-18 08:58:36'),(28,2,3,'new_post',0,'2024-11-18 08:58:36'),(29,2,1,'new_post',1,'2024-11-18 10:27:22'),(30,2,3,'new_post',0,'2024-11-18 10:27:22'),(31,2,8,'signalement',1,'2024-11-18 19:33:19'),(32,2,8,'signalement',1,'2024-11-18 19:35:19'),(33,2,8,'signalement',1,'2024-11-18 19:35:43'),(34,2,8,'signalement',1,'2024-11-18 19:37:45'),(35,2,8,'signalement',1,'2024-11-18 19:38:07'),(36,2,8,'signalement',1,'2024-11-18 19:51:53'),(37,2,8,'signalement',1,'2024-11-18 20:01:13'),(38,2,8,'signalement',1,'2024-11-19 11:59:00'),(39,2,8,'signalement',1,'2024-11-19 11:59:02'),(40,2,8,'signalement',1,'2024-11-20 04:55:02'),(41,2,8,'signalement',1,'2024-11-20 08:26:52'),(42,2,2,'reaction',1,'2024-11-20 08:30:57'),(43,2,2,'comment',1,'2024-11-20 08:31:09'),(44,2,4,'follow',0,'2024-11-21 08:10:52'),(45,2,8,'signalement',1,'2024-11-21 08:14:01'),(46,2,8,'signalement',1,'2024-11-21 08:14:04'),(47,2,8,'signalement',1,'2024-11-21 08:14:13');
+INSERT INTO `notifications` VALUES (1,3,1,'reaction',1,'2024-11-10 17:54:28'),(2,3,1,'comment',1,'2024-11-10 17:54:59'),(3,3,1,'reaction',1,'2024-11-10 17:55:09'),(4,3,4,'comment_reaction',1,'2024-11-10 17:55:43'),(5,3,1,'new_post',1,'2024-11-10 17:56:18'),(6,3,2,'new_post',1,'2024-11-10 17:56:18'),(7,3,2,'follow',1,'2024-11-10 17:57:06'),(8,1,3,'comment_reaction',1,'2024-11-10 17:58:07'),(9,4,3,'comment_reaction',1,'2024-11-10 19:43:01'),(10,1,2,'follow',1,'2024-11-11 08:14:27'),(11,1,6,'follow',0,'2024-11-11 08:14:53'),(12,2,3,'reaction',1,'2024-11-11 09:12:43'),(13,2,3,'comment',1,'2024-11-13 18:51:02'),(14,3,2,'reaction',1,'2024-11-13 18:52:05'),(15,2,3,'reaction',1,'2024-11-13 18:55:08'),(16,2,3,'reaction',1,'2024-11-13 18:55:22'),(17,3,1,'comment',1,'2024-11-13 19:14:24'),(18,2,1,'follow',1,'2024-11-15 10:39:50'),(19,2,1,'new_post',1,'2024-11-16 20:25:45'),(20,2,3,'new_post',0,'2024-11-16 20:25:45'),(21,2,1,'new_post',1,'2024-11-18 07:44:21'),(22,2,3,'new_post',0,'2024-11-18 07:44:21'),(23,2,1,'new_post',1,'2024-11-18 07:48:14'),(24,2,3,'new_post',0,'2024-11-18 07:48:14'),(25,2,1,'new_post',1,'2024-11-18 08:53:42'),(26,2,3,'new_post',0,'2024-11-18 08:53:42'),(27,2,1,'new_post',1,'2024-11-18 08:58:36'),(28,2,3,'new_post',0,'2024-11-18 08:58:36'),(29,2,1,'new_post',1,'2024-11-18 10:27:22'),(30,2,3,'new_post',0,'2024-11-18 10:27:22'),(31,2,8,'signalement',1,'2024-11-18 19:33:19'),(32,2,8,'signalement',1,'2024-11-18 19:35:19'),(33,2,8,'signalement',1,'2024-11-18 19:35:43'),(34,2,8,'signalement',1,'2024-11-18 19:37:45'),(35,2,8,'signalement',1,'2024-11-18 19:38:07'),(36,2,8,'signalement',1,'2024-11-18 19:51:53'),(37,2,8,'signalement',1,'2024-11-18 20:01:13'),(38,2,8,'signalement',1,'2024-11-19 11:59:00'),(39,2,8,'signalement',1,'2024-11-19 11:59:02'),(40,2,8,'signalement',1,'2024-11-20 04:55:02'),(41,2,8,'signalement',1,'2024-11-20 08:26:52'),(42,2,2,'reaction',1,'2024-11-20 08:30:57'),(43,2,2,'comment',1,'2024-11-20 08:31:09'),(44,2,4,'follow',0,'2024-11-21 08:10:52'),(45,2,8,'signalement',1,'2024-11-21 08:14:01'),(46,2,8,'signalement',1,'2024-11-21 08:14:04'),(47,2,8,'signalement',1,'2024-11-21 08:14:13'),(48,3,8,'signalement',1,'2024-11-21 23:03:05');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `security_complaints` (
   PRIMARY KEY (`id`),
   KEY `signalement_id` (`signalement_id`),
   CONSTRAINT `security_complaints_ibfk_1` FOREIGN KEY (`signalement_id`) REFERENCES `signalements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -428,7 +428,7 @@ CREATE TABLE `security_complaints` (
 
 LOCK TABLES `security_complaints` WRITE;
 /*!40000 ALTER TABLE `security_complaints` DISABLE KEYS */;
-INSERT INTO `security_complaints` VALUES (1,4,'Oreki','enquete','2024-11-19','Assigné','On va fournir des nouvelles prochainement.','2024-11-19 05:11:29','2024-11-19 05:56:50','haute'),(2,3,'Oreki','interview','2024-11-20','En attente de résolution','Toujours en attente de nouvelles.','2024-11-19 05:15:12','2024-11-19 05:15:12','moyenne'),(3,2,'Oreki','audience','2024-11-21','En appel','Votre présence est requise lors de l\'audience.','2024-11-19 05:17:13','2024-11-19 05:17:13','moyenne'),(4,1,'Oreki','cloture_enquete','2024-11-22','Clôturé','Merci je de nous avoir remis votre confiance.','2024-11-19 05:18:47','2024-11-19 05:18:47','moyenne'),(5,6,'Oreki','enquete','2024-11-23','Reçu','Ajouter des preuves','2024-11-19 12:03:48','2024-11-19 12:03:48','haute'),(6,8,'Oreki','enquete','2024-12-31','Reçu','En attente de preuves','2024-11-20 08:28:23','2024-11-20 08:28:23','haute'),(7,5,'Oreki','appel_a_temoin','2023-12-24','En appel','En attente du temoins','2024-11-20 11:18:39','2024-11-20 11:18:39','moyenne'),(8,7,'Oreki','appel_a_temoin','2023-04-07','Clôturé','Aucune signalement de violence.','2024-11-20 11:20:04','2024-11-20 11:20:04','faible'),(9,11,'Oreki','audience','2024-12-31','En attente de résolution','En attente des preuves.','2024-11-21 08:17:35','2024-11-21 08:17:35','moyenne');
+INSERT INTO `security_complaints` VALUES (1,4,'Oreki','enquete','2024-11-19','Assigné','On va fournir des nouvelles prochainement.','2024-11-19 05:11:29','2024-11-19 05:56:50','haute'),(2,3,'Oreki','interview','2024-11-20','En attente de résolution','Toujours en attente de nouvelles.','2024-11-19 05:15:12','2024-11-19 05:15:12','moyenne'),(3,2,'Oreki','audience','2024-11-21','En appel','Votre présence est requise lors de l\'audience.','2024-11-19 05:17:13','2024-11-19 05:17:13','moyenne'),(4,1,'Oreki','interview','2024-11-22','Clôturé','L\'enquete est termine, merci de nous avoir fait confiance.','2024-11-19 05:18:47','2024-11-21 19:26:44','moyenne'),(5,6,'Oreki','enquete','2024-11-23','Reçu','Ajouter des preuves','2024-11-19 12:03:48','2024-11-19 12:03:48','haute'),(6,8,'Oreki','enquete','2024-12-31','Reçu','En attente de preuves','2024-11-20 08:28:23','2024-11-20 08:28:23','haute'),(7,5,'Oreki','appel_a_temoin','2023-12-24','En appel','En attente du temoins','2024-11-20 11:18:39','2024-11-20 11:18:39','moyenne'),(8,7,'Oreki','appel_a_temoin','2023-04-07','Clôturé','Aucune signalement de violence.','2024-11-20 11:20:04','2024-11-20 11:20:04','faible'),(9,11,'Oreki','interview','2024-12-06','En attente de documents','Veuiller nou fournir vos documents.','2024-11-21 08:17:35','2024-11-22 11:50:29','moyenne'),(10,9,'Oreki','enquete','2023-12-06','En appel','sos','2024-11-21 11:24:58','2024-11-21 11:24:58','faible'),(11,10,'Oreki','interview','2024-04-05','En attente de résolution','sos','2024-11-21 11:25:35','2024-11-21 11:25:35','moyenne'),(12,12,'Oreki','appel_a_temoin','2024-11-05','En vérification','Les preuves sont recus.','2024-11-21 23:04:00','2024-11-22 03:26:07','haute');
 /*!40000 ALTER TABLE `security_complaints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,7 +456,7 @@ CREATE TABLE `signalements` (
   KEY `receiver_id` (`receiver_id`),
   CONSTRAINT `signalements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `signalements_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,8 +465,41 @@ CREATE TABLE `signalements` (
 
 LOCK TABLES `signalements` WRITE;
 /*!40000 ALTER TABLE `signalements` DISABLE KEYS */;
-INSERT INTO `signalements` VALUES (1,2,8,'Rasoa','2024-11-22','12:22:00','Andoharanofotsy','Abus',NULL,NULL,'2024-11-18 19:37:45'),(2,2,8,'Rasoa','2024-11-22','12:22:00','ankadimbahoaka','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b979f83f1f.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b979f839a3.jpg','2024-11-18 19:38:07'),(3,2,8,'Rasoa','2024-12-11','23:23:00','analakely','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b9ad95b2a6.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b9ad95ae26.jpg','2024-11-18 19:51:53'),(4,2,8,'Rasoa','2024-11-23','12:34:00','ankatso','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b9d094b492.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b9d094aed3.png','2024-11-18 20:01:13'),(5,2,8,'Sandra','2024-11-22','23:22:00','ampasapito','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673c7d841f15d.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673c7d841eee4.png','2024-11-19 11:59:00'),(6,2,8,'Sandra','2024-11-22','23:22:00','Andoharanofotsy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673c7d861583b.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673c7d861563e.png','2024-11-19 11:59:02'),(7,2,8,'Raoa','2024-11-12','23:23:00','Andoharanofotsy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673d6ba6c317d.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673d6ba6c310d.jpg','2024-11-20 04:55:02'),(8,2,8,'Raketaka','2024-11-22','23:23:00','anosy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673d9d4cdbdf6.pdf',NULL,'2024-11-20 08:26:52'),(9,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebc9ad784.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebc9ad594.jpg','2024-11-21 08:14:01'),(10,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebcc449fe.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebcc449a5.jpg','2024-11-21 08:14:04'),(11,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebd5a44d2.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebd5a442c.jpg','2024-11-21 08:14:13');
+INSERT INTO `signalements` VALUES (1,2,8,'Rasoa','2024-11-22','12:22:00','Andoharanofotsy','Abus',NULL,NULL,'2024-11-18 19:37:45'),(2,2,8,'Rasoa','2024-11-22','12:22:00','ankadimbahoaka','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b979f83f1f.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b979f839a3.jpg','2024-11-18 19:38:07'),(3,2,8,'Rasoa','2024-12-11','23:23:00','analakely','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b9ad95b2a6.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b9ad95ae26.jpg','2024-11-18 19:51:53'),(4,2,8,'Rasoa','2024-11-23','12:34:00','ankatso','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673b9d094b492.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673b9d094aed3.png','2024-11-18 20:01:13'),(5,2,8,'Sandra','2024-11-22','23:22:00','ampasapito','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673c7d841f15d.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673c7d841eee4.png','2024-11-19 11:59:00'),(6,2,8,'Sandra','2024-11-22','23:22:00','Andoharanofotsy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673c7d861583b.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673c7d861563e.png','2024-11-19 11:59:02'),(7,2,8,'Raoa','2024-11-12','23:23:00','Andoharanofotsy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673d6ba6c317d.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673d6ba6c310d.jpg','2024-11-20 04:55:02'),(8,2,8,'Raketaka','2024-11-22','23:23:00','anosy','Abus','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673d9d4cdbdf6.pdf',NULL,'2024-11-20 08:26:52'),(9,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebc9ad784.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebc9ad594.jpg','2024-11-21 08:14:01'),(10,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebcc449fe.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebcc449a5.jpg','2024-11-21 08:14:04'),(11,2,8,'Anjara','2024-12-04','23:45:00','Antsirabe','Harcelement','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673eebd5a44d2.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673eebd5a442c.jpg','2024-11-21 08:14:13'),(12,3,8,'Jinx','2024-11-04','14:34:00','Piltover','Discrimination','http://localhost/Devoi_socila_media/src/backend/api/uploads/files/673fbc2985fa2.pdf','http://localhost/Devoi_socila_media/src/backend/api/uploads/signatures/673fbc2985a82.png','2024-11-21 23:03:05');
 /*!40000 ALTER TABLE `signalements` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `status_history`
+--
+
+DROP TABLE IF EXISTS `status_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `status_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `security_complaint_id` int NOT NULL,
+  `previous_status` varchar(255) DEFAULT NULL,
+  `previous_step` varchar(255) DEFAULT NULL,
+  `new_step` varchar(255) DEFAULT NULL,
+  `new_status` varchar(255) DEFAULT NULL,
+  `changed_by` int DEFAULT NULL,
+  `change_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `comments` text,
+  PRIMARY KEY (`id`),
+  KEY `security_complaint_id` (`security_complaint_id`),
+  CONSTRAINT `status_history_ibfk_1` FOREIGN KEY (`security_complaint_id`) REFERENCES `security_complaints` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `status_history`
+--
+
+LOCK TABLES `status_history` WRITE;
+/*!40000 ALTER TABLE `status_history` DISABLE KEYS */;
+INSERT INTO `status_history` VALUES (1,1,'','Enquête en cours','Appel à témoins','Reçu',8,'2024-11-21 19:20:06','Signalement recu.'),(2,1,'Reçu','Enquête en cours','Appel à témoins','En vérification',8,'2024-11-21 19:22:57','En cours de verification, donsc vous serrez a temoigner demain.'),(3,1,'En vérification','Enquête en cours','Appel à témoins','En attente de résolution',8,'2024-11-21 19:24:16','L\'enquete continue, vous serrez prevenu du nouveau changement.'),(4,1,'En attente de résolution','Enquête en cours','Appel à témoins','Résolu',8,'2024-11-21 19:26:00','L\'affaire est resolu, nous vous envoierons un rapport pour tous les deroulements.'),(5,1,'Résolu','Enquête en cours','Appel à témoins','Clôturé',8,'2024-11-21 19:26:44','L\'enquete est termine, merci de nous avoir fait confiance.'),(6,12,NULL,'Enquête en cours','Appel à témoins','Reçu',8,'2024-11-21 23:04:00','Recu'),(7,12,'Reçu','Enquête en cours','Appel à témoins','En vérification',8,'2024-11-22 03:26:07','Les preuves sont recus.'),(8,11,'','','enquete','Reçu',8,'2024-11-22 07:16:51','Affaire recu'),(9,11,'Reçu','enquete','appel_a_temoin','En vérification',8,'2024-11-22 07:24:22','En cours de verification.'),(10,11,'En vérification','appel_a_temoin','interview','En attente de documents',8,'2024-11-22 11:50:29','Veuiller nou fournir vos documents.');
+/*!40000 ALTER TABLE `status_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -536,4 +569,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-21 12:08:18
+-- Dump completed on 2024-11-22 15:19:20
