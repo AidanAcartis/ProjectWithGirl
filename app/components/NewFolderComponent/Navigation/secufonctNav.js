@@ -14,6 +14,8 @@ import GeographicDistributionChart from "../SectionSecurity/secuGraph/geoGrap";
 import ReportsByPersonChart from "../SectionSecurity/secuGraph/reportGraph";
 import SignalementCharts from "../SectionSecurity/secuGraph/statusChart";
 import StatutHistoryChart from "../SectionSecurity/secuGraph/evolutionChart";
+import PrivateChat from "../../../api/chat/chatPrivate";
+import ProofList from "../proof/secuProof";
 
 export default function SecuFonctNavigationCard() {
   const pathname = usePathname();
@@ -58,10 +60,6 @@ export default function SecuFonctNavigationCard() {
                 🔍<span className="hidden md:block">Analyser les preuves fournies</span>
                 </button>
 
-                <button onClick={() => handleTabChange('updateStatus')} className={activeTab === 'updateStatus' ? activeElementClasses : nonActiveElementClasses}>
-                ⚖️<span className="hidden md:block">Mettre à jour l'état des plaintes</span>
-                </button>
-
                 <button onClick={() => handleTabChange('communication')} className={activeTab === 'communication' ? activeElementClasses : nonActiveElementClasses}>
                 💬<span className="hidden md:block">Communiquer avec la victime</span>
                 </button>
@@ -91,7 +89,7 @@ export default function SecuFonctNavigationCard() {
         {activeTab === 'proofAnalysis' && (
           <div>
             <p>Analyser les preuves fournies</p>
-           
+              <ProofList />
           </div>
         )}
         {activeTab === 'comments' && (
@@ -108,6 +106,11 @@ export default function SecuFonctNavigationCard() {
         {activeTab === 'communication' && (
           <div>
                 <p>Communiquer avec la victime</p>
+                <Card>
+                <div>
+                    <PrivateChat />
+                </div>
+                </Card>
           </div>
         )}
       </div>

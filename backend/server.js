@@ -52,9 +52,109 @@ connectToDatabase().then(connection => {
     process.exit(1); // Quitte le serveur si la connexion échoue
 });
 
+
 // Route pour la racine, servant une page HTML ou un fichier
 app.get('/', (req, res) => {
     res.send('<h1>Bienvenue sur le serveur!</h1>');
+});
+
+
+// Fonction pour récupérer les données des évaluations
+async function getEvaluationData() {
+    try {
+        const [rows] = await db.execute(
+            'SELECT id, signalement_id, user_id, clarity, effectiveness, response_time, empathy, comment, created_at FROM evaluations'
+        );
+        return rows;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des évaluations:', error);
+        return [];
+    }
+}
+
+// Route pour récupérer les évaluations
+app.get('/api/evaluations', async (req, res) => {
+    try {
+        const rows = await getEvaluationData();
+        res.json(rows); // Retourner les données des évaluations au format JSON
+    } catch (error) {
+        res.status(500).json({ error: 'Erreur serveur lors de la récupération des évaluations.' });
+    }
+});
+
+// Gérer la connexion WebSocket
+io.on('connection', (socket) => {
+    console.log('Nouvelle connexion WebSocket');
+
+    // Fonction pour envoyer les données des évaluations via WebSocket
+    const sendEvaluationData = async () => {
+        const data = await getEvaluationData();
+        socket.emit('evaluationData', data); // Envoi des données
+    };
+
+    // Envoyer les données initiales
+    sendEvaluationData();
+
+    // Détecter la déconnexion
+    socket.on('disconnect', () => {
+        console.log('Déconnexion WebSocket');
+    });
+});
+
+
+// Route pour récupérer les événements liés à un utilisateur
+app.get('/api/events', async (req, res) => {
+    const { userId } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'userId est requis.' });
+    }
+
+    let db;
+    try {
+        db = await connectToDatabase(); // Établir une nouvelle connexion pour chaque requête
+        const query = `
+            SELECT 
+                sh.id AS event_id,
+                sh.security_complaint_id,
+                sc.signalement_id,
+                s.user_id,
+                sh.new_status,
+                sh.new_step,
+                sh.change_date,
+                sh.comments
+            FROM status_history sh
+            JOIN security_complaints sc ON sh.security_complaint_id = sc.id
+            JOIN signalements s ON sc.signalement_id = s.id
+            WHERE s.user_id = ? OR s.receiver_id = ?;
+        `;
+        const [rows] = await db.execute(query, [userId, userId]); // Utilisation correcte des paramètres SQL
+
+        res.json(rows);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des événements :', error);
+        res.status(500).json({ error: 'Erreur serveur' });
+    } finally {
+        if (db) {
+            await db.end(); // Fermeture manuelle de la connexion après utilisation
+        }
+    }
+});
+
+// Gestion des WebSocket pour notifier les nouveaux événements
+io.on('connection', (socket) => {
+    console.log('Un client s\'est connecté.');
+
+    socket.on('disconnect', () => {
+        console.log('Un client s\'est déconnecté.');
+    });
+
+    // Exemple : envoyer un événement simulé
+    socket.emit('new_event', {
+        new_status: 'Nouvel événement',
+        change_date: new Date().toISOString(),
+        comments: 'Ceci est un test.'
+    });
 });
 
 // API pour récupérer l'historique des statuts d'un signalement
@@ -405,6 +505,29 @@ io.on('connection', (socket) => {
         }
     });
 });
+
+// WebSocket pour gérer les messages privés
+io.on('connection', (socket) => {
+    console.log('Nouvelle connexion WebSocket:', socket.id);
+
+    // Écouter les demandes de messages non lus
+    socket.on('getUnreadMessages', async (userId) => {
+        try {
+            // Récupérer le nombre de messages non lus pour l'utilisateur
+            const [results] = await db.query(
+                'SELECT COUNT(*) AS unread_count FROM private_messages WHERE receiver_id = ? AND is_read = 0',
+                [userId]
+            );
+            const unreadCount = results[0].unread_count;
+
+            // Émettre un événement au client spécifique
+            socket.emit('unreadMessagesCount', { unreadCount });
+        } catch (err) {
+            console.error('Erreur lors de la récupération des messages non lus:', err);
+        }
+    });
+});
+
 
 // WebSocket pour gérer les notifications
 io.on('connection', (socket) => {
